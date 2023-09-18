@@ -1,5 +1,5 @@
 import express from 'express'
-import { login, signup } from '../controller/adminController';
+import { login, signup } from '../controller/adminController.js';
 var router = express.Router();
 
 /* GET home page. */

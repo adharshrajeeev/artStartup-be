@@ -1,4 +1,5 @@
-import adminRepository from '../repositories/adminRepository';
+import { create, findByEmail } from '../reporsitory/dbRepository.js';
+
 
 
 function sendResponse(res, message, success = true, statusCode = 200) {
@@ -7,8 +8,8 @@ function sendResponse(res, message, success = true, statusCode = 200) {
 
 export async function login(req, res) {
   try {
-    const { username, password } = req.body;
-    const admin = await adminRepository.findByName(username);
+    const { email, password } = req.body;
+    const admin = await findByEmail(email);
 
     if (!admin || admin.password !== password) {
         return sendResponse(res, 'Invalid credentials', false, 401);
@@ -25,16 +26,16 @@ export async function login(req, res) {
 
 export async function signup(req, res) {
   try {
-    const { username, password } = req.body;
+    const { email , password } = req.body;
 
     // Check if the username already exists
-    const existingAdmin = await adminRepository.findByName(username);
+    const existingAdmin = await findByEmail(email);
     if (existingAdmin) {
       return sendResponse(res, 'Username already exists', false, 400);
     }
 
     // Create a new admin user
-    const newAdmin = await adminRepository.create({ username, password });
+    const newAdmin = await create({ username, password });
 
     return sendResponse(res, 'Signup successful');
   } catch (error) {
