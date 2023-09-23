@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 // Replace with your MongoDB Atlas connection string
-const mongoURI = 'mongodb+srv://adharshrajeeev2000:QU8RGTzDlWIhZQQJ@cluster0.gslnyqh.mongodb.net/artStartup?retryWrites=true&w=majority';
+const mongoURI = 'mongodb+srv://shabeera:Shabeera@cluster0.ckymuw6.mongodb.net/?retryWrites=true&w=majority';
 const connectDB = async () => {
     try {
       await mongoose.connect(mongoURI, {

@@ -6,6 +6,7 @@ import cors from 'cors'
 
 import adminRouter from './routes/adminRouter.js';
 import userRouter from './routes/userRouter.js';
+import productRouter from './routes/productRouter.js'
 import connectDB from "./database/db.js";
 import dotenv from 'dotenv';
 dotenv.config()
@@ -25,6 +26,7 @@ app.use(cookieParser());
 
 app.use('/api/admin', adminRouter);
 app.use('/api', userRouter);
+app.use('/api/product', productRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
